@@ -7,11 +7,12 @@ on:
         required: true
         default: homologacao
   push:
-    paths: "src/**"
+    paths: ["src/**"]
 jobs:
   mostrar_ambiente:
     runs-on: ubuntu-latest
     steps:
-      - env:
+      - name: env
+        env:
           ENV_DEPLOY: ${{inputs.ambiente}}
-      run: echo "$ENV_DEPLOY"
+        run: echo "$ENV_DEPLOY"
