@@ -1,0 +1,17 @@
+name: Eventos e Filtros
+on: 
+  workflow_dispatch:
+    inputs:
+      ambiente:
+        description: "Qual ambiente de deploy?"
+        required: true
+        default: homologacao
+  push:
+    paths: "src/**"
+jobs:
+  mostrar_ambiente:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          ENV_DEPLOY: ${{inputs.ambiente}}
+      run: echo "$ENV_DEPLOY"
